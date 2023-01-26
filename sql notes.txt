@@ -1,0 +1,92 @@
+DDL ----->DATA DEFINATION LANG >>used to change the table
+1)CREATE -->used to create the table
+2)DROP  -->used to delete the table,delete the entire table
+3)ALTER -->use to add the column,column name
+4)TRUNCATE -->used to delete the values in tha table but table structure remains same
+and can't rollback
+5)RENAME
+
+DML -----> DATA MANUPALTING LANG >>used to change the data
+1)SELECT
+2)INSERT
+3)UPDATE  -->UPDATE table_name SET column_name ='data' where condition;
+4)DELETE  -->DELETE FROM table_name WHERE condition;
+
+TCL --> TRANSCATION CONTROL LANG >>used to control the data
+1)COMMIT -->used to store the data permanently
+2)ROLLBACK-->used to get the deleted data
+3)SAVEPOINT-->used to save the data -----> SAVEPOINT A;
+
+
+DROP--->can't use where condition to filter
+TRUNCATE--->can't use where to filter,table structure remains
+DELETE--->can use where condition
+AND --->use to fetch 2 values
+SELECT * FROM table_name where column_name='  ' AND column_name= '';
+OR --->use to fetch
+SELECT * FROM table_name where column_name='  ' OR column_name= '';
+IN--->USE TO AVOID MULTIPLE OR OPERATOR
+	SELECT * FROM table_name WHERE id IN (data,data,data...);
+NOT IN--->used to exclude the data while fetching
+
+BETWEEN ---> used to get values in between the range
+
+AGGREARATION=perform calculation
+     used to perform some calculation on particular column
+     aggregate functions are used for numeric values
+1)COUNT--->use to count the number of rows
+		will return number of rows from table
+         SELECT count(column_name) from table_name;
+		 SELECT count(*) FROM table_name;
+2)SUM--->use to add all the values
+retrun the sum of all the rows from particular column
+         SELECT SUM(column_name) from table_name;
+3)MAX--->use to find the max values
+retrun the MAX value from the column
+         SELECT MAX(column_name)from table_name;
+4)MIN--->use to find the max values
+retrun the MIN value from the column
+         SELECT MIN(column_name)from table_name;
+5)AVG--->Use to find the average values
+retrun the sum of all the value from the column
+		 SELECT AVG(column_name)from table_name;
+6)ENUM--->used to fix the values
+		CREATE TABLE cric_info(id int,cric_type enum('odi','test','t20'),overs int,location varchar(40));
+		SELECT * FROM cric_info;
+		INSERT INTO cric_info values(1,'test',50,'bangalore');
+		INSERT INTO cric_info values(1,'3',50,'bangalore');
+7)LENGTH---->used to find the length of characters in row
+		WILL Retrun the no of charcters in particular column
+		SELECT length(column_name) from table_name;
+		SELECT length(column_name) as length_of_data from table_name;
+
+CREATE,ALTER,DROP,TRUNCATE,INSERT,UPDATE,SELECT,WHERE,AND,OR,IN,NOT IN,COMMIT,ROLLBACK 
+SAVEPOINT,BETWEEN,DISTINCT,INSTR,SUBSTR,UPPER,LOWER,CONCAT,SUM,MAX,MIN,AVG,ENUM,LENGTH
+
+LTRIM---> LEFT REMOVE
+		SELECT LTRIM('  XWORKZ') as space_remove;
+RTRIM--->REMOVE THE TRAILING SPACES FROM DATA
+	SELECT RTRIM('  XWORKZ') as space_remove;
+
+	SELECT RTRIM(prod_name) as trail from mtrproducts;
+	SELECT LTRIM(rtrim('   SAHANA    '))AS SPACES;
+ORDER BY: Used for sorting
+		SELECT * from table_name order by id;
+		SELECT * from table_name order by id DESC; -->desecnding order
+	
+CONSTRAINTS 
+constraints:CREATE TABLE table_name(column_name datatype constraintType);
+			Use to restrict the data,null values
+			Use to set some rules from data,use limit the type of data
+			constraints are applied to the column
+			constraints are applioed while creating table
+			nothing but validation
+			constraints voilations--->error in constraints
+	1)NOT NULL--->not accept any null values
+					accept dupilacte values
+				CREATE TABLE marriage(id int not null);
+	2)unique---->allow null values
+				doesn't allow dupolicate values
+	3)CHECk----->to check & limt the data values
+	CREATE TABLE serials(id int unique not null ,name varchar(30) unique,director varchar(40) not null unique,
+	episode int, check(episode>=500));
